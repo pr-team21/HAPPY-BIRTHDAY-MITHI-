@@ -48,8 +48,8 @@
         }
 
         .active {
-            display: flex;
-            animation: zoomIn 0.5s ease-out;
+            display: flex !important;
+            animation: zoomIn 0.4s ease-out;
         }
 
         @keyframes zoomIn {
@@ -59,9 +59,9 @@
 
         /* Glassmorphism Cards */
         .glass-card {
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 2px solid rgba(255, 255, 255, 0.8);
             border-radius: 30px;
             padding: 25px;
@@ -70,13 +70,13 @@
             max-width: 92%;
             width: 440px;
             position: relative;
-            z-index: 5;
+            z-index: 10;
         }
 
         .title {
-            font-size: 2.4rem;
+            font-size: 2.3rem;
             color: #ff0055;
-            text-shadow: 3px 3px 0px #fff, 0px 0px 15px rgba(255, 0, 85, 0.4);
+            text-shadow: 2px 2px 0px #fff, 0px 0px 12px rgba(255, 0, 85, 0.4);
             margin-bottom: 10px;
             animation: floatText 3s ease-in-out infinite alternate;
         }
@@ -137,8 +137,8 @@
 
         /* Photo Frames */
         .photo-frame {
-            width: 230px;
-            height: 300px;
+            width: 220px;
+            height: 290px;
             border-radius: 20px;
             border: 6px solid #fff;
             box-shadow: 0 12px 25px rgba(0,0,0,0.2);
@@ -298,7 +298,7 @@
         }
     </style>
 </head>
-<body onclick="startGlobalAudio()">
+<body>
 
     <!-- SCREEN 1: Welcome Page -->
     <div id="screen1" class="screen active">
@@ -307,7 +307,7 @@
             <h1 class="title">HAPPY BIRTHDAY MITHI</h1>
             <div class="doll-bar">🌸 🌺 🌷 🌻</div>
             
-            <div class="gift-wrapper" onclick="openGift(event)">
+            <div class="gift-wrapper" onclick="openGift()">
                 <svg width="120" height="120" viewBox="0 0 100 100">
                     <rect x="15" y="40" width="70" height="50" rx="10" fill="#ff4081"/>
                     <rect x="10" y="28" width="80" height="16" rx="6" fill="#ff0055"/>
@@ -343,7 +343,7 @@
     <div id="screen3" class="screen">
         <div class="glass-card">
             <div class="doll-bar">🪆 🌸 🎀</div>
-            <img src="photo1.jpg" alt="Photo 1" class="photo-frame" onerror="this.src='https://via.placeholder.com/230x300?text=Photo+1'">
+            <img src="photo1.jpg" alt="Photo 1" class="photo-frame" onerror="this.src='https://via.placeholder.com/220x290?text=Photo+1'">
             <div class="hindi-box">
                 मेरी प्यारी बहन मीठी को जन्मदिन की बहुत-बहुत शुभकामनाएं! 🎂🎉<br><br>
                 तुम हमेशा ऐसे ही मुस्कुराती रहो और तुम्हारे जीवन में ढेर सारी खुशियाँ आएँ! ✨
@@ -356,7 +356,7 @@
     <div id="screen4" class="screen">
         <div class="glass-card">
             <div class="doll-bar">🧸 🎵 🌸</div>
-            <img src="photo2.jpg" alt="Photo 2" class="photo-frame" onerror="this.src='https://via.placeholder.com/230x300?text=Photo+2'">
+            <img src="photo2.jpg" alt="Photo 2" class="photo-frame" onerror="this.src='https://via.placeholder.com/220x290?text=Photo+2'">
             <div class="hindi-box">
                 🎵 आपके लिए यह विशेष जन्मदिन गीत बज रहा है! 🎶
             </div>
@@ -369,7 +369,7 @@
         <div class="glass-card">
             <h1 class="title">Happy Birthday Mithi</h1>
             <div class="doll-bar">🎉 🪆 🥳 🧸 🎉</div>
-            <img src="photo3.jpg" alt="Photo 3" class="photo-frame" onerror="this.src='https://via.placeholder.com/230x300?text=Photo+3'">
+            <img src="photo3.jpg" alt="Photo 3" class="photo-frame" onerror="this.src='https://via.placeholder.com/220x290?text=Photo+3'">
             <div class="doll-bar">🎉 🌸 🌷 🌺 🎉</div>
             
             <button class="btn-action btn-celebrate" onclick="goToScreen('screen6')">🎉 Celebrate ✨</button>
@@ -396,7 +396,6 @@
 
                 <!-- SVG Birthday Cake -->
                 <svg class="cake-svg" viewBox="0 0 200 160">
-                    <!-- Stand -->
                     <ellipse cx="100" cy="140" rx="80" ry="12" fill="#e0e0e0"/>
                     <rect x="92" y="140" width="16" height="10" fill="#bdbdbd"/>
                     
@@ -449,42 +448,92 @@
         </div>
     </div>
 
-    <!-- Audio Elements -->
-    <audio id="bgAudio" loop preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=sweet-cheerful-loop-11222.mp3" type="audio/mpeg">
-    </audio>
-
-    <audio id="balloon2Audio" loop preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73425.mp3?filename=happy-birthday-to-you-cute-10982.mp3" type="audio/mpeg">
-    </audio>
-
     <script>
-        const bgAudio = document.getElementById('bgAudio');
-        const balloon2Audio = document.getElementById('balloon2Audio');
-        let audioInitialized = false;
         let audioCtx = null;
+        let bgInterval = null;
+        let b2Interval = null;
         let chantInterval = null;
 
-        function startGlobalAudio() {
-            if (!audioInitialized) {
-                bgAudio.volume = 0.5;
-                bgAudio.play().catch(e => console.log("Bg audio setup"));
-                audioInitialized = true;
+        function getAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        // Play Tone Generator
+        function playTone(freq, duration, type = 'sine', volume = 0.15) {
+            try {
+                const ctx = getAudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, ctx.currentTime);
+                gain.gain.setValueAtTime(volume, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + duration);
+            } catch(e){}
+        }
+
+        // Soft Background Music Loop
+        function startBackgroundTune() {
+            stopB2Tune();
+            if (bgInterval) return;
+            const bgNotes = [261.63, 329.63, 392.00, 523.25, 392.00, 329.63];
+            let idx = 0;
+            bgInterval = setInterval(() => {
+                playTone(bgNotes[idx], 0.6, 'sine', 0.08);
+                idx = (idx + 1) % bgNotes.length;
+            }, 700);
+        }
+
+        function stopBackgroundTune() {
+            if (bgInterval) {
+                clearInterval(bgInterval);
+                bgInterval = null;
             }
         }
 
-        // Direct Navigation Function
+        // Balloon 2 Special Happy Birthday Tune
+        function startB2Tune() {
+            stopBackgroundTune();
+            if (b2Interval) return;
+            const b2Notes = [
+                261, 261, 293, 261, 349, 329,
+                261, 261, 293, 261, 392, 349
+            ];
+            let idx = 0;
+            b2Interval = setInterval(() => {
+                playTone(b2Notes[idx], 0.4, 'triangle', 0.2);
+                idx = (idx + 1) % b2Notes.length;
+            }, 500);
+        }
+
+        function stopB2Tune() {
+            if (b2Interval) {
+                clearInterval(b2Interval);
+                b2Interval = null;
+            }
+        }
+
+        // Screen Navigation (Direct & Unblocked)
         function goToScreen(screenId) {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            const targetScreen = document.getElementById(screenId);
-            if (targetScreen) {
-                targetScreen.classList.add('active');
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(s => s.classList.remove('active'));
+            const target = document.getElementById(screenId);
+            if (target) {
+                target.classList.add('active');
             }
         }
 
-        function openGift(e) {
-            if (e) e.stopPropagation();
-            startGlobalAudio();
+        function openGift() {
+            startBackgroundTune();
             triggerConfetti();
             goToScreen('screen2');
         }
@@ -495,64 +544,30 @@
             }
         }
 
-        // Fixed Balloon 2 Song Playback
         function playBalloon2SongAndGo(screenId) {
-            startGlobalAudio();
-            bgAudio.pause();
-            balloon2Audio.currentTime = 0;
-            balloon2Audio.play().catch(e => console.log("Playing balloon2 audio"));
+            startB2Tune();
             goToScreen(screenId);
         }
 
         function stopBalloon2SongAndGo(screenId) {
-            balloon2Audio.pause();
-            bgAudio.play().catch(e => console.log("Resuming bg audio"));
+            stopB2Tune();
+            startBackgroundTune();
             goToScreen(screenId);
         }
 
-        // Lighting Candle Mechanics
+        // Candle & Speech Chant
         function lightCandle() {
             document.getElementById('candleFlame').style.display = 'block';
             document.getElementById('lighterContainer').style.display = 'none';
             document.getElementById('knife').style.display = 'block';
             document.getElementById('cakeInstructions').style.display = 'block';
 
-            startHighPitchChant();
+            startChanting();
         }
 
-        // Audio Melody Speech Synthesizer Chants
-        function playAudioChantSound() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-
-            const notes = [
-                { f: 523.25, d: 0.2 }, { f: 523.25, d: 0.2 },
-                { f: 587.33, d: 0.4 }, { f: 523.25, d: 0.4 },
-                { f: 698.46, d: 0.4 }, { f: 659.25, d: 0.8 }
-            ];
-
-            let time = audioCtx.currentTime;
-            notes.forEach(n => {
-                let osc = audioCtx.createOscillator();
-                let gain = audioCtx.createGain();
-                osc.type = 'triangle';
-                osc.frequency.value = n.f;
-                gain.gain.setValueAtTime(0.3, time);
-                gain.gain.exponentialRampToValueAtTime(0.001, time + n.d);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start(time);
-                osc.stop(time + n.d);
-                time += n.d + 0.05;
-            });
-
-            // Browser Voice Chant Speech Synthesis Fallback
+        function speakBirthdayText() {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const msg = new SpeechSynthesisUtterance("Happy Birthday Mithi");
-                msg.pitch = 1.3;
-     
+                msg.pitch = 1.4;
+                msg
