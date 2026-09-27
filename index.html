@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Mithi! ✨🎂</title>
-    <!-- Canvas Confetti Library -->
+    <!-- Canvas Confetti Library for Party Poppers -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Yatra+One&display=swap');
@@ -59,25 +59,24 @@
 
         /* Glassmorphism Cards */
         .glass-card {
-            background: rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 2px solid rgba(255, 255, 255, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.7);
             border-radius: 30px;
-            padding: 30px;
+            padding: 25px;
             box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
             text-align: center;
-            max-width: 90%;
+            max-width: 92%;
             width: 440px;
             position: relative;
         }
 
-        /* Animated Titles */
         .title {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             color: #ff0055;
             text-shadow: 3px 3px 0px #fff, 0px 0px 15px rgba(255, 0, 85, 0.4);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             animation: floatText 3s ease-in-out infinite alternate;
         }
 
@@ -87,16 +86,14 @@
         }
 
         .doll-bar {
-            font-size: 2.2rem;
-            margin: 10px 0;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+            font-size: 2rem;
+            margin: 8px 0;
         }
 
-        /* Interactive Gift Box */
+        /* Gift Box */
         .gift-wrapper {
-            position: relative;
             cursor: pointer;
-            margin: 25px 0;
+            margin: 20px 0;
             transition: transform 0.3s;
         }
 
@@ -104,7 +101,7 @@
             transform: scale(1.15) rotate(3deg);
         }
 
-        /* Interactive Balloons */
+        /* Balloons */
         .balloon-group {
             display: flex;
             gap: 20px;
@@ -113,8 +110,8 @@
         }
 
         .balloon {
-            width: 85px;
-            height: 110px;
+            width: 80px;
+            height: 105px;
             border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
             cursor: pointer;
             position: relative;
@@ -134,56 +131,45 @@
             border-bottom: 12px solid inherit;
         }
 
-        .balloon-string {
-            position: absolute;
-            bottom: -35px;
-            left: 50%;
-            width: 2px;
-            height: 25px;
-            background: rgba(0,0,0,0.2);
-        }
-
         .b1 { background: #ff4081; animation-delay: 0s; }
         .b2 { background: #ffd700; animation-delay: 0.8s; }
         .b3 { background: #00e676; animation-delay: 1.6s; }
 
         @keyframes floatBalloon {
             0% { transform: translateY(0) rotate(-3deg); }
-            100% { transform: translateY(-25px) rotate(3deg); }
+            100% { transform: translateY(-20px) rotate(3deg); }
         }
 
         .balloon:hover {
             transform: scale(1.25) translateY(-10px) !important;
         }
 
-        /* Photos & Hindi Text */
+        /* Photo Frame */
         .photo-frame {
-            width: 240px;
-            height: 320px;
+            width: 230px;
+            height: 310px;
             border-radius: 20px;
             border: 6px solid #fff;
             box-shadow: 0 12px 25px rgba(0,0,0,0.2);
             object-fit: cover;
-            margin: 15px 0;
-            transition: transform 0.5s;
+            margin: 12px 0;
         }
 
         .hindi-box {
             font-family: 'Yatra One', 'Comic Sans MS', cursive;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: #c2185b;
             background: rgba(255, 255, 255, 0.85);
-            padding: 15px 20px;
+            padding: 12px 18px;
             border-radius: 20px;
             margin-top: 10px;
-            line-height: 1.6;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            line-height: 1.5;
         }
 
-        .btn-back {
-            margin-top: 20px;
-            padding: 12px 30px;
-            font-size: 1.2rem;
+        .btn-action {
+            margin-top: 15px;
+            padding: 12px 28px;
+            font-size: 1.15rem;
             background: linear-gradient(45deg, #ff0055, #ff4081);
             color: white;
             border: none;
@@ -194,27 +180,82 @@
             transition: all 0.3s;
         }
 
-        .btn-back:hover {
+        .btn-action:hover {
             transform: scale(1.08);
-            box-shadow: 0 12px 25px rgba(255, 0, 85, 0.6);
         }
 
-        /* 3D Moving Photo Stage */
-        .stage-3d {
-            perspective: 1000px;
-            margin: 15px 0;
+        .btn-celebrate {
+            background: linear-gradient(45deg, #00e676, #00c853);
+            box-shadow: 0 8px 20px rgba(0, 230, 118, 0.4);
+            margin-top: 15px;
         }
 
-        .photo-3d {
-            animation: rotate3D 6s ease-in-out infinite alternate;
+        /* Cake Interface Styles */
+        .cake-container {
+            position: relative;
+            width: 250px;
+            height: 200px;
+            margin: 20px auto;
         }
 
-        @keyframes rotate3D {
-            0% { transform: rotateY(-20deg) rotateX(10deg) scale(0.95); }
-            100% { transform: rotateY(20deg) rotateX(-10deg) scale(1.05); }
+        .cake-svg {
+            width: 100%;
+            height: 100%;
         }
 
-        /* Floating Falling Elements */
+        .flame {
+            display: none;
+            animation: flicker 0.6s infinite alternate;
+            transform-origin: center bottom;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+            100% { transform: scale(1.15) rotate(2deg); opacity: 1; }
+        }
+
+        .lighter-btn {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+            margin: 10px 0;
+            transition: transform 0.2s;
+        }
+
+        .lighter-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .knife-btn {
+            display: none;
+            position: absolute;
+            top: -20px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 3.5rem;
+            transition: transform 1s ease-in-out;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
+        }
+
+        .cut-animation {
+            transform: translate(-90px, 110px) rotate(-45deg) !important;
+        }
+
+        .cake-cut-slice {
+            transition: transform 1s ease-in-out;
+        }
+
+        .sliced-apart {
+            transform: translateX(15px) translateY(5px);
+        }
+
+        /* Falling Rose Petals */
         .falling-item {
             position: fixed;
             top: -10%;
@@ -230,7 +271,7 @@
         }
     </style>
 </head>
-<body>
+<body onclick="initAudio()">
 
     <!-- SCREEN 1: Welcome Page -->
     <div id="screen1" class="screen active">
@@ -240,7 +281,7 @@
             <div class="doll-bar">🌸 🌺 🌷 🌻</div>
             
             <div class="gift-wrapper" onclick="openGift()">
-                <svg width="130" height="130" viewBox="0 0 100 100">
+                <svg width="120" height="120" viewBox="0 0 100 100">
                     <rect x="15" y="40" width="70" height="50" rx="10" fill="#ff4081"/>
                     <rect x="10" y="28" width="80" height="16" rx="6" fill="#ff0055"/>
                     <rect x="42" y="28" width="16" height="62" fill="#ffd700"/>
@@ -261,18 +302,12 @@
     <div id="screen2" class="screen">
         <div class="glass-card">
             <div class="doll-bar">🧸 🪆 🧸</div>
-            <h2 class="title" style="font-size: 2.2rem;">मीठी, एक गुब्बारा चुनें! 🎈</h2>
+            <h2 class="title" style="font-size: 2.1rem;">मीठी, एक गुब्बारा चुनें! 🎈</h2>
             
             <div class="balloon-group">
-                <div class="balloon b1" onclick="goToScreen('screen3')">
-                    <div class="balloon-string"></div>
-                </div>
-                <div class="balloon b2" onclick="startMusicAndGo('screen4')">
-                    <div class="balloon-string"></div>
-                </div>
-                <div class="balloon b3" onclick="startPartyAndGo('screen5')">
-                    <div class="balloon-string"></div>
-                </div>
+                <div class="balloon b1" onclick="goToScreen('screen3')"></div>
+                <div class="balloon b2" onclick="playBalloon2SongAndGo('screen4')"></div>
+                <div class="balloon b3" onclick="goToScreen('screen5')"></div>
             </div>
         </div>
     </div>
@@ -281,44 +316,122 @@
     <div id="screen3" class="screen">
         <div class="glass-card">
             <div class="doll-bar">🪆 🌸 🎀</div>
-            <img src="photo1.jpg" alt="Photo 1" class="photo-frame" onerror="this.src='https://via.placeholder.com/240x320?text=Photo+1'">
+            <img src="photo1.jpg" alt="Photo 1" class="photo-frame" onerror="this.src='https://via.placeholder.com/230x310?text=Photo+1'">
             <div class="hindi-box">
                 मेरी प्यारी बहन मीठी को जन्मदिन की बहुत-बहुत शुभकामनाएं! 🎂🎉<br><br>
                 तुम हमेशा ऐसे ही मुस्कुराती रहो और तुम्हारे जीवन में ढेर सारी खुशियाँ आएँ! ✨
             </div>
-            <button class="btn-back" onclick="goToScreen('screen2')">⬅ वापस जाएं</button>
+            <button class="btn-action" onclick="goToScreen('screen2')">⬅ वापस जाएं</button>
         </div>
     </div>
 
-    <!-- SCREEN 4: Balloon 2 - Photo 2 & AI Synthesized Birthday Song -->
+    <!-- SCREEN 4: Balloon 2 - Photo 2 & Song -->
     <div id="screen4" class="screen">
         <div class="glass-card">
             <div class="doll-bar">🧸 🎵 🌸</div>
-            <img src="photo2.jpg" alt="Photo 2" class="photo-frame" onerror="this.src='https://via.placeholder.com/240x320?text=Photo+2'">
+            <img src="photo2.jpg" alt="Photo 2" class="photo-frame" onerror="this.src='https://via.placeholder.com/230x310?text=Photo+2'">
             <div class="hindi-box">
-                🎵 तुम्हारे लिए यह प्यारा सा जन्मदिन संगीत बजाया जा रहा है! 🎶
+                🎵 आपके लिए यह विशेष जन्मदिन गीत बज रहा है! 🎶
             </div>
-            <button class="btn-back" onclick="stopMusicAndGo('screen2')">⬅ वापस जाएं</button>
+            <button class="btn-action" onclick="stopBalloon2SongAndGo('screen2')">⬅ वापस जाएं</button>
         </div>
     </div>
 
-    <!-- SCREEN 5: Balloon 3 - Photo 3 & 3D Celebration -->
+    <!-- SCREEN 5: Balloon 3 - Photo 3 & Celebrate Button -->
     <div id="screen5" class="screen">
         <div class="glass-card">
             <h1 class="title">Happy Birthday Mithi</h1>
             <div class="doll-bar">🎉 🪆 🥳 🧸 🎉</div>
-            
-            <div class="stage-3d">
-                <img src="photo3.jpg" alt="Photo 3" class="photo-frame photo-3d" onerror="this.src='https://via.placeholder.com/240x320?text=Photo+3'">
-            </div>
-
+            <img src="photo3.jpg" alt="Photo 3" class="photo-frame" onerror="this.src='https://via.placeholder.com/230x310?text=Photo+3'">
             <div class="doll-bar">🎉 🌸 🌷 🌺 🎉</div>
-            <button class="btn-back" onclick="goToScreen('screen2')">⬅ वापस जाएं</button>
+            
+            <button class="btn-action btn-celebrate" onclick="goToScreen('screen6')">🎉 Celebrate ✨</button>
+            <br>
+            <button class="btn-action" onclick="goToScreen('screen2')">⬅ वापस जाएं</button>
         </div>
     </div>
 
+    <!-- SCREEN 6: Cake Cutting Interface -->
+    <div id="screen6" class="screen">
+        <div class="glass-card">
+            <h1 class="title" style="font-size: 2.2rem;">Cake Cutting Time! 🎂</h1>
+            
+            <div class="cake-container">
+                <!-- Knife -->
+                <div id="knife" class="knife-btn" onclick="cutCake()" title="Click to cut cake">🔪</div>
+
+                <!-- SVG Birthday Cake -->
+                <svg class="cake-svg" viewBox="0 0 200 160">
+                    <!-- Stand -->
+                    <ellipse cx="100" cy="140" rx="80" ry="12" fill="#e0e0e0"/>
+                    <rect x="92" y="140" width="16" height="10" fill="#bdbdbd"/>
+                    <ellipse cx="100" cy="150" rx="40" ry="6" fill="#9e9e9e"/>
+                    
+                    <!-- Base Layer -->
+                    <rect x="35" y="90" width="130" height="45" rx="8" fill="#ff4081"/>
+                    
+                    <!-- Slice Cutout Layer (Moves when cut) -->
+                    <g id="cakeSlice" class="cake-cut-slice">
+                        <path d="M 125 90 L 165 90 Q 165 135 125 135 Z" fill="#f50057"/>
+                    </g>
+
+                    <!-- Frosting Drops -->
+                    <path d="M 35 90 Q 48 105 61 90 Q 74 105 87 90 Q 100 105 113 90 Q 126 105 139 90 Q 152 105 165 90 L 165 80 L 35 80 Z" fill="#ffffff"/>
+                    
+                    <!-- Top Layer -->
+                    <rect x="50" y="55" width="100" height="30" rx="6" fill="#ff80ab"/>
+                    <path d="M 50 55 Q 62.5 67 75 55 Q 87.5 67 100 55 Q 112.5 67 125 55 Q 137.5 67 150 55 L 150 48 L 50 48 Z" fill="#ffffff"/>
+
+                    <!-- Candle -->
+                    <rect x="96" y="25" width="8" height="25" fill="#ffd700"/>
+                    <line x1="100" y1="25" x2="100" y2="18" stroke="#333" stroke-width="2"/>
+
+                    <!-- Flame (Hidden until lighter clicked) -->
+                    <g id="candleFlame" class="flame">
+                        <path d="M 100 4 C 94 12, 96 18, 100 18 C 104 18, 106 12, 100 4 Z" fill="#ff9800"/>
+                        <path d="M 100 8 C 97 13, 98 17, 100 17 C 102 17, 103 13, 100 8 Z" fill="#ffeb3b"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Lighter Button -->
+            <button id="lighterBtn" class="lighter-btn" onclick="lightCandle()">🔥 लाइटर से मोमबत्ती जलाएं</button>
+            <p id="cakeInstructions" class="hindi-text" style="display:none; font-size: 1.1rem;">
+                🔪 चाकू पर क्लिक करके केक काटें!
+            </p>
+
+            <button class="btn-action" onclick="goToScreen('screen5')" style="margin-top:15px;">⬅ वापस जाएं</button>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <!-- Background Loop Song -->
+    <audio id="bgAudio" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=sweet-cheerful-loop-11222.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Balloon 2 Song -->
+    <audio id="balloon2Audio" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73425.mp3?filename=happy-birthday-to-you-cute-10982.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
-        // Screen Switcher
+        const bgAudio = document.getElementById('bgAudio');
+        const balloon2Audio = document.getElementById('balloon2Audio');
+        let audioInitialized = false;
+        let speechSynth = window.speechSynthesis;
+        let chantInterval = null;
+
+        // Initialize Background Music on first user click anywhere
+        function initAudio() {
+            if (!audioInitialized) {
+                bgAudio.volume = 0.5;
+                bgAudio.play().catch(e => console.log("Audio waiting for interaction"));
+                audioInitialized = true;
+            }
+        }
+
+        // Screen Navigation Function
         function goToScreen(screenId) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(screenId).classList.add('active');
@@ -329,102 +442,69 @@
             goToScreen('screen2');
         }
 
-        // Confetti Fireworks Trigger
         function triggerConfetti() {
             if (typeof confetti === 'function') {
-                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 } });
             }
         }
 
-        // Advanced Web Audio API Synthesizer (Cute Chime Happy Birthday Song)
-        let audioCtx = null;
-        let isSongPlaying = false;
-        let audioTimeoutIds = [];
-
-        function playHappyBirthdaySynth() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-
-            isSongPlaying = true;
-            const notes = [
-                { note: 'G4', duration: 0.35 }, { note: 'G4', duration: 0.25 },
-                { note: 'A4', duration: 0.6 },  { note: 'G4', duration: 0.6 },
-                { note: 'C5', duration: 0.6 },  { note: 'B4', duration: 1.0 },
-
-                { note: 'G4', duration: 0.35 }, { note: 'G4', duration: 0.25 },
-                { note: 'A4', duration: 0.6 },  { note: 'G4', duration: 0.6 },
-                { note: 'D5', duration: 0.6 },  { note: 'C5', duration: 1.0 },
-
-                { note: 'G4', duration: 0.35 }, { note: 'G4', duration: 0.25 },
-                { note: 'G5', duration: 0.6 },  { note: 'E5', duration: 0.6 },
-                { note: 'C5', duration: 0.6 },  { note: 'B4', duration: 0.6 },
-                { note: 'A4', duration: 0.8 },
-
-                { note: 'F5', duration: 0.35 }, { note: 'F5', duration: 0.25 },
-                { note: 'E5', duration: 0.6 },  { note: 'C5', duration: 0.6 },
-                { note: 'D5', duration: 0.6 },  { note: 'C5', duration: 1.2 }
-            ];
-
-            const frequencies = {
-                'G4': 392.00, 'A4': 440.00, 'B4': 493.88,
-                'C5': 523.25, 'D5': 587.33, 'E5': 659.25,
-                'F5': 698.46, 'G5': 783.99
-            };
-
-            let timeOffset = audioCtx.currentTime + 0.1;
-
-            notes.forEach(item => {
-                let osc = audioCtx.createOscillator();
-                let gain = audioCtx.createGain();
-
-                // Sweet bell/chime synth configuration
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(frequencies[item.note], timeOffset);
-
-                gain.gain.setValueAtTime(0, timeOffset);
-                gain.gain.linearRampToValueAtTime(0.3, timeOffset + 0.05);
-                gain.gain.exponentialRampToValueAtTime(0.001, timeOffset + item.duration);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-
-                osc.start(timeOffset);
-                osc.stop(timeOffset + item.duration);
-
-                timeOffset += item.duration + 0.08;
-            });
-
-            // Loop melody when active
-            let totalDuration = (timeOffset - audioCtx.currentTime) * 1000;
-            let timeoutId = setTimeout(() => {
-                if (isSongPlaying) playHappyBirthdaySynth();
-            }, totalDuration);
-            
-            audioTimeoutIds.push(timeoutId);
-        }
-
-        function startMusicAndGo(screenId) {
-            goToScreen(screenId);
-            playHappyBirthdaySynth();
-        }
-
-        function stopMusicAndGo(screenId) {
-            isSongPlaying = false;
-            audioTimeoutIds.forEach(id => clearTimeout(id));
-            audioTimeoutIds = [];
-            if (audioCtx) {
-                audioCtx.suspend();
-            }
+        // Balloon 2 Music Switcher
+        function playBalloon2SongAndGo(screenId) {
+            bgAudio.pause();
+            balloon2Audio.currentTime = 0;
+            balloon2Audio.play().catch(e => console.log("Audio play allowed"));
             goToScreen(screenId);
         }
 
-        function startPartyAndGo(screenId) {
+        function stopBalloon2SongAndGo(screenId) {
+            balloon2Audio.pause();
+            bgAudio.play().catch(e => console.log("Audio play allowed"));
             goToScreen(screenId);
-            var duration = 4 * 1000;
+        }
+
+        // Cake Cutting Mechanics
+        function lightCandle() {
+            document.getElementById('candleFlame').style.display = 'block';
+            document.getElementById('lighterBtn').style.display = 'none';
+            document.getElementById('knife').style.display = 'block';
+            document.getElementById('cakeInstructions').style.display = 'block';
+
+            startVoiceChant();
+        }
+
+        // AI Chanting Audio function
+        function speakChant() {
+            if ('speechSynthesis' in window) {
+                speechSynth.cancel();
+                const utterance = new SpeechSynthesisUtterance("Happy Birthday Mithi");
+                utterance.pitch = 1.4; // Cute higher pitch voice
+                utterance.rate = 0.9;
+                speechSynth.speak(utterance);
+            }
+        }
+
+        function startVoiceChant() {
+            speakChant();
+            if (!chantInterval) {
+                chantInterval = setInterval(() => {
+                    speakChant();
+                }, 2800);
+            }
+        }
+
+        function cutCake() {
+            const knife = document.getElementById('knife');
+            knife.classList.add('cut-animation');
+
+            setTimeout(() => {
+                document.getElementById('cakeSlice').classList.add('sliced-apart');
+                startPartyPopperRain();
+            }, 800);
+        }
+
+        // Continuous Party Popper Raining
+        function startPartyPopperRain() {
+            var duration = 8 * 1000;
             var animationEnd = Date.now() + duration;
 
             var interval = setInterval(function() {
@@ -432,11 +512,11 @@
                 if (timeLeft <= 0) {
                     return clearInterval(interval);
                 }
-                confetti({ particleCount: 50, startVelocity: 30, spread: 360, origin: { x: Math.random(), y: Math.random() - 0.2 } });
-            }, 250);
+                confetti({ particleCount: 40, startVelocity: 30, spread: 360, origin: { x: Math.random(), y: Math.random() - 0.2 } });
+            }, 300);
         }
 
-        // Falling Rose Petals & Flower Rain
+        // Falling Flowers and Roses
         function createFallingItem() {
             const item = document.createElement('div');
             item.classList.add('falling-item');
@@ -456,4 +536,5 @@
         setInterval(createFallingItem, 250);
     </script>
 </body>
-</html>
+    </html>
+    
