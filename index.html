@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Mithi! ✨🎂</title>
-    <!-- Canvas Confetti Library for Party Poppers -->
+    <!-- Canvas Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Yatra+One&display=swap');
@@ -19,7 +19,7 @@
             font-family: 'Fredoka', cursive, sans-serif;
             background: linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            animation: gradientBG 12s ease infinite;
             min-height: 100vh;
             overflow-x: hidden;
             display: flex;
@@ -53,15 +53,15 @@
         }
 
         @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.8); }
+            from { opacity: 0; transform: scale(0.85); }
             to { opacity: 1; transform: scale(1); }
         }
 
         /* Glassmorphism Cards */
         .glass-card {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border: 2px solid rgba(255, 255, 255, 0.7);
             border-radius: 30px;
             padding: 25px;
@@ -120,17 +120,6 @@
             box-shadow: inset -10px -10px 20px rgba(0,0,0,0.15), 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .balloon::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-bottom: 12px solid inherit;
-        }
-
         .b1 { background: #ff4081; animation-delay: 0s; }
         .b2 { background: #ffd700; animation-delay: 0.8s; }
         .b3 { background: #00e676; animation-delay: 1.6s; }
@@ -144,7 +133,7 @@
             transform: scale(1.25) translateY(-10px) !important;
         }
 
-        /* Photo Frame */
+        /* Photo Frames */
         .photo-frame {
             width: 230px;
             height: 310px;
@@ -187,15 +176,39 @@
         .btn-celebrate {
             background: linear-gradient(45deg, #00e676, #00c853);
             box-shadow: 0 8px 20px rgba(0, 230, 118, 0.4);
-            margin-top: 15px;
         }
 
-        /* Cake Interface Styles */
+        /* Dancing Dolls Background Layer */
+        .dancing-dolls-bg {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            font-size: 2.8rem;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .dancing-doll {
+            animation: dance 1s infinite alternate ease-in-out;
+        }
+
+        .dancing-doll:nth-child(2) { animation-delay: 0.3s; }
+        .dancing-doll:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes dance {
+            0% { transform: translateY(0) rotate(-15deg); }
+            100% { transform: translateY(-20px) rotate(15deg); }
+        }
+
+        /* Interactive Cake Area */
         .cake-container {
             position: relative;
-            width: 250px;
+            width: 260px;
             height: 200px;
-            margin: 20px auto;
+            margin: 15px auto;
         }
 
         .cake-svg {
@@ -205,64 +218,76 @@
 
         .flame {
             display: none;
-            animation: flicker 0.6s infinite alternate;
+            animation: flicker 0.5s infinite alternate;
             transform-origin: center bottom;
         }
 
         @keyframes flicker {
-            0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
-            100% { transform: scale(1.15) rotate(2deg); opacity: 1; }
+            0% { transform: scale(1) rotate(-3deg); opacity: 0.9; }
+            100% { transform: scale(1.2) rotate(3deg); opacity: 1; }
         }
 
-        .lighter-btn {
-            background: #ff9800;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 1.1rem;
+        /* Lighter Visual */
+        .lighter-visual {
+            width: 70px;
+            height: 90px;
             cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
-            margin: 10px 0;
+            margin: 10px auto;
             transition: transform 0.2s;
+            filter: drop-shadow(0 6px 10px rgba(0,0,0,0.25));
         }
 
-        .lighter-btn:hover {
-            transform: scale(1.1);
+        .lighter-visual:hover {
+            transform: scale(1.15) rotate(5deg);
         }
 
+        /* Knife & Cake Slicing Animation */
         .knife-btn {
             display: none;
             position: absolute;
-            top: -20px;
-            right: 10px;
+            top: -25px;
+            right: 15px;
             cursor: pointer;
             font-size: 3.5rem;
-            transition: transform 1s ease-in-out;
-            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
+            transition: transform 1.2s ease-in-out;
+            filter: drop-shadow(2px 5px 8px rgba(0,0,0,0.3));
+            z-index: 10;
         }
 
         .cut-animation {
-            transform: translate(-90px, 110px) rotate(-45deg) !important;
+            transform: translate(-100px, 120px) rotate(-50deg) !important;
         }
 
-        .cake-cut-slice {
-            transition: transform 1s ease-in-out;
+        .slice1 { transition: transform 1.2s ease-in-out; }
+        .slice2 { transition: transform 1.2s ease-in-out; }
+
+        .slice1-cut { transform: translateX(-20px) translateY(10px) rotate(-5deg); }
+        .slice2-cut { transform: translateX(20px) translateY(10px) rotate(5deg); }
+
+        /* End Banner */
+        .end-banner {
+            display: none;
+            font-size: 2.3rem;
+            color: #ff0055;
+            font-weight: bold;
+            text-shadow: 2px 2px 0px #fff, 0 0 20px #ff0055;
+            animation: pulseGlow 1.5s infinite alternate;
+            margin-top: 15px;
         }
 
-        .sliced-apart {
-            transform: translateX(15px) translateY(5px);
+        @keyframes pulseGlow {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            100% { transform: scale(1.08); opacity: 1; }
         }
 
-        /* Falling Rose Petals */
+        /* Falling Rain Items */
         .falling-item {
             position: fixed;
             top: -10%;
-            font-size: 24px;
+            font-size: 28px;
             user-select: none;
             pointer-events: none;
-            z-index: 1;
+            z-index: 99;
             animation: fall linear infinite;
         }
 
@@ -353,6 +378,13 @@
 
     <!-- SCREEN 6: Cake Cutting Interface -->
     <div id="screen6" class="screen">
+        <!-- Dancing Dolls Background -->
+        <div class="dancing-dolls-bg">
+            <div class="dancing-doll">🪆</div>
+            <div class="dancing-doll">🧸</div>
+            <div class="dancing-doll">🪆</div>
+        </div>
+
         <div class="glass-card">
             <h1 class="title" style="font-size: 2.2rem;">Cake Cutting Time! 🎂</h1>
             
@@ -365,28 +397,26 @@
                     <!-- Stand -->
                     <ellipse cx="100" cy="140" rx="80" ry="12" fill="#e0e0e0"/>
                     <rect x="92" y="140" width="16" height="10" fill="#bdbdbd"/>
-                    <ellipse cx="100" cy="150" rx="40" ry="6" fill="#9e9e9e"/>
                     
-                    <!-- Base Layer -->
-                    <rect x="35" y="90" width="130" height="45" rx="8" fill="#ff4081"/>
-                    
-                    <!-- Slice Cutout Layer (Moves when cut) -->
-                    <g id="cakeSlice" class="cake-cut-slice">
-                        <path d="M 125 90 L 165 90 Q 165 135 125 135 Z" fill="#f50057"/>
+                    <!-- Left Cake Piece -->
+                    <g id="cakePiece1" class="slice1">
+                        <rect x="35" y="90" width="65" height="45" rx="4" fill="#ff4081"/>
+                        <rect x="50" y="55" width="50" height="35" rx="4" fill="#ff80ab"/>
+                        <path d="M 35 90 Q 48 100 61 90 Q 74 100 87 90 L 100 90 L 100 80 L 35 80 Z" fill="#ffffff"/>
                     </g>
 
-                    <!-- Frosting Drops -->
-                    <path d="M 35 90 Q 48 105 61 90 Q 74 105 87 90 Q 100 105 113 90 Q 126 105 139 90 Q 152 105 165 90 L 165 80 L 35 80 Z" fill="#ffffff"/>
-                    
-                    <!-- Top Layer -->
-                    <rect x="50" y="55" width="100" height="30" rx="6" fill="#ff80ab"/>
-                    <path d="M 50 55 Q 62.5 67 75 55 Q 87.5 67 100 55 Q 112.5 67 125 55 Q 137.5 67 150 55 L 150 48 L 50 48 Z" fill="#ffffff"/>
+                    <!-- Right Cake Piece -->
+                    <g id="cakePiece2" class="slice2">
+                        <rect x="100" y="90" width="65" height="45" rx="4" fill="#ff4081"/>
+                        <rect x="100" y="55" width="50" height="35" rx="4" fill="#ff80ab"/>
+                        <path d="M 100 90 Q 113 100 126 90 Q 139 100 152 90 L 165 90 L 165 80 L 100 80 Z" fill="#ffffff"/>
+                    </g>
 
                     <!-- Candle -->
-                    <rect x="96" y="25" width="8" height="25" fill="#ffd700"/>
+                    <rect x="96" y="25" width="8" height="30" fill="#ffd700"/>
                     <line x1="100" y1="25" x2="100" y2="18" stroke="#333" stroke-width="2"/>
 
-                    <!-- Flame (Hidden until lighter clicked) -->
+                    <!-- Flame -->
                     <g id="candleFlame" class="flame">
                         <path d="M 100 4 C 94 12, 96 18, 100 18 C 104 18, 106 12, 100 4 Z" fill="#ff9800"/>
                         <path d="M 100 8 C 97 13, 98 17, 100 17 C 102 17, 103 13, 100 8 Z" fill="#ffeb3b"/>
@@ -394,23 +424,34 @@
                 </svg>
             </div>
 
-            <!-- Lighter Button -->
-            <button id="lighterBtn" class="lighter-btn" onclick="lightCandle()">🔥 लाइटर से मोमबत्ती जलाएं</button>
-            <p id="cakeInstructions" class="hindi-text" style="display:none; font-size: 1.1rem;">
+            <!-- Realistic Lighter Image Graphic -->
+            <div id="lighterContainer" onclick="lightCandle()">
+                <svg class="lighter-visual" viewBox="0 0 100 140">
+                    <rect x="25" y="50" width="50" height="80" rx="10" fill="#ff3d00"/>
+                    <rect x="30" y="20" width="40" height="30" rx="4" fill="#b0bec5"/>
+                    <circle cx="50" cy="35" r="8" fill="#37474f"/>
+                    <path d="M 45 10 L 55 10 L 50 0 Z" fill="#ffc107"/>
+                </svg>
+                <p style="color:#d81b60; font-weight:bold;">लाइटर पर क्लिक करें! 🔥</p>
+            </div>
+
+            <p id="cakeInstructions" class="hindi-text" style="display:none;">
                 🔪 चाकू पर क्लिक करके केक काटें!
             </p>
+
+            <div id="finalBanner" class="end-banner">
+                💖 HAPPY BIRTHDAY MITHI 💖
+            </div>
 
             <button class="btn-action" onclick="goToScreen('screen5')" style="margin-top:15px;">⬅ वापस जाएं</button>
         </div>
     </div>
 
     <!-- Audio Elements -->
-    <!-- Background Loop Song -->
     <audio id="bgAudio" loop preload="auto">
         <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=sweet-cheerful-loop-11222.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Balloon 2 Song -->
     <audio id="balloon2Audio" loop preload="auto">
         <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73425.mp3?filename=happy-birthday-to-you-cute-10982.mp3" type="audio/mpeg">
     </audio>
@@ -419,19 +460,17 @@
         const bgAudio = document.getElementById('bgAudio');
         const balloon2Audio = document.getElementById('balloon2Audio');
         let audioInitialized = false;
-        let speechSynth = window.speechSynthesis;
+        let audioCtx = null;
         let chantInterval = null;
 
-        // Initialize Background Music on first user click anywhere
         function initAudio() {
             if (!audioInitialized) {
                 bgAudio.volume = 0.5;
-                bgAudio.play().catch(e => console.log("Audio waiting for interaction"));
+                bgAudio.play().catch(e => console.log("Audio awaiting gesture"));
                 audioInitialized = true;
             }
         }
 
-        // Screen Navigation Function
         function goToScreen(screenId) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(screenId).classList.add('active');
@@ -448,93 +487,76 @@
             }
         }
 
-        // Balloon 2 Music Switcher
+        // Fixed Balloon 2 Song Playback
         function playBalloon2SongAndGo(screenId) {
             bgAudio.pause();
             balloon2Audio.currentTime = 0;
-            balloon2Audio.play().catch(e => console.log("Audio play allowed"));
+            let playPromise = balloon2Audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    balloon2Audio.play();
+                });
+            }
             goToScreen(screenId);
         }
 
         function stopBalloon2SongAndGo(screenId) {
             balloon2Audio.pause();
-            bgAudio.play().catch(e => console.log("Audio play allowed"));
+            bgAudio.play().catch(e => console.log("Bg audio resumed"));
             goToScreen(screenId);
         }
 
-        // Cake Cutting Mechanics
+        // Lighting Candle Mechanics
         function lightCandle() {
             document.getElementById('candleFlame').style.display = 'block';
-            document.getElementById('lighterBtn').style.display = 'none';
+            document.getElementById('lighterContainer').style.display = 'none';
             document.getElementById('knife').style.display = 'block';
             document.getElementById('cakeInstructions').style.display = 'block';
 
-            startVoiceChant();
+            startHighPitchChant();
         }
 
-        // AI Chanting Audio function
-        function speakChant() {
-            if ('speechSynthesis' in window) {
-                speechSynth.cancel();
-                const utterance = new SpeechSynthesisUtterance("Happy Birthday Mithi");
-                utterance.pitch = 1.4; // Cute higher pitch voice
-                utterance.rate = 0.9;
-                speechSynth.speak(utterance);
+        // Web Audio Synthesizer Voice Chanting for Happy Birthday Mithi
+        function playAudioChantSound() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            // High pitch melody notes simulating "Happy Birthday Mithi"
+            const notes = [
+                { f: 523.25, d: 0.2 }, { f: 523.25, d: 0.2 },
+                { f: 587.33, d: 0.4 }, { f: 523.25, d: 0.4 },
+                { f: 698.46, d: 0.4 }, { f: 659.25, d: 0.8 }
+            ];
+
+            let time = audioCtx.currentTime;
+            notes.forEach(n => {
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.value = n.f;
+                gain.gain.setValueAtTime(0.3, time);
+                gain.gain.exponentialRampToValueAtTime(0.001, time + n.d);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start(time);
+                osc.stop(time + n.d);
+                time += n.d + 0.05;
+            });
         }
 
-        function startVoiceChant() {
-            speakChant();
+        function startHighPitchChant() {
+            playAudioChantSound();
             if (!chantInterval) {
                 chantInterval = setInterval(() => {
-                    speakChant();
-                }, 2800);
+                    playAudioChantSound();
+                }, 2200);
             }
         }
 
+        // Cake Cutting Action
         function cutCake() {
-            const knife = document.getElementById('knife');
-            knife.classList.add('cut-animation');
-
-            setTimeout(() => {
-                document.getElementById('cakeSlice').classList.add('sliced-apart');
-                startPartyPopperRain();
-            }, 800);
-        }
-
-        // Continuous Party Popper Raining
-        function startPartyPopperRain() {
-            var duration = 8 * 1000;
-            var animationEnd = Date.now() + duration;
-
-            var interval = setInterval(function() {
-                var timeLeft = animationEnd - Date.now();
-                if (timeLeft <= 0) {
-                    return clearInterval(interval);
-                }
-                confetti({ particleCount: 40, startVelocity: 30, spread: 360, origin: { x: Math.random(), y: Math.random() - 0.2 } });
-            }, 300);
-        }
-
-        // Falling Flowers and Roses
-        function createFallingItem() {
-            const item = document.createElement('div');
-            item.classList.add('falling-item');
-            
-            const list = ['🌹', '🌸', '✨', '💖', '🌷', '🌺', '🎈'];
-            item.innerText = list[Math.floor(Math.random() * list.length)];
-            
-            item.style.left = Math.random() * 100 + 'vw';
-            item.style.animationDuration = Math.random() * 3 + 3 + 's';
-            item.style.fontSize = Math.random() * 15 + 18 + 'px';
-            
-            document.body.appendChild(item);
-
-            setTimeout(() => { item.remove(); }, 6000);
-        }
-
-        setInterval(createFallingItem, 250);
-    </script>
-</body>
-    </html>
     
