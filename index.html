@@ -49,7 +49,7 @@
 
         .active {
             display: flex;
-            animation: zoomIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: zoomIn 0.5s ease-out;
         }
 
         @keyframes zoomIn {
@@ -59,10 +59,10 @@
 
         /* Glassmorphism Cards */
         .glass-card {
-            background: rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.55);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            border: 2px solid rgba(255, 255, 255, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.8);
             border-radius: 30px;
             padding: 25px;
             box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
@@ -70,10 +70,11 @@
             max-width: 92%;
             width: 440px;
             position: relative;
+            z-index: 5;
         }
 
         .title {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             color: #ff0055;
             text-shadow: 3px 3px 0px #fff, 0px 0px 15px rgba(255, 0, 85, 0.4);
             margin-bottom: 10px;
@@ -82,23 +83,24 @@
 
         @keyframes floatText {
             0% { transform: translateY(0); }
-            100% { transform: translateY(-10px); }
+            100% { transform: translateY(-8px); }
         }
 
         .doll-bar {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin: 8px 0;
         }
 
         /* Gift Box */
         .gift-wrapper {
             cursor: pointer;
-            margin: 20px 0;
+            margin: 20px auto;
+            display: inline-block;
             transition: transform 0.3s;
         }
 
         .gift-wrapper:hover {
-            transform: scale(1.15) rotate(3deg);
+            transform: scale(1.15) rotate(4deg);
         }
 
         /* Balloons */
@@ -126,17 +128,17 @@
 
         @keyframes floatBalloon {
             0% { transform: translateY(0) rotate(-3deg); }
-            100% { transform: translateY(-20px) rotate(3deg); }
+            100% { transform: translateY(-18px) rotate(3deg); }
         }
 
         .balloon:hover {
-            transform: scale(1.25) translateY(-10px) !important;
+            transform: scale(1.2) translateY(-10px) !important;
         }
 
         /* Photo Frames */
         .photo-frame {
             width: 230px;
-            height: 310px;
+            height: 300px;
             border-radius: 20px;
             border: 6px solid #fff;
             box-shadow: 0 12px 25px rgba(0,0,0,0.2);
@@ -146,9 +148,9 @@
 
         .hindi-box {
             font-family: 'Yatra One', 'Comic Sans MS', cursive;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: #c2185b;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             padding: 12px 18px;
             border-radius: 20px;
             margin-top: 10px;
@@ -158,7 +160,7 @@
         .btn-action {
             margin-top: 15px;
             padding: 12px 28px;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             background: linear-gradient(45deg, #ff0055, #ff4081);
             color: white;
             border: none;
@@ -185,10 +187,10 @@
             width: 100%;
             font-size: 2.8rem;
             position: absolute;
-            top: 20px;
+            top: 25px;
             left: 0;
             pointer-events: none;
-            opacity: 0.8;
+            opacity: 0.85;
         }
 
         .dancing-doll {
@@ -200,14 +202,14 @@
 
         @keyframes dance {
             0% { transform: translateY(0) rotate(-15deg); }
-            100% { transform: translateY(-20px) rotate(15deg); }
+            100% { transform: translateY(-18px) rotate(15deg); }
         }
 
         /* Interactive Cake Area */
         .cake-container {
             position: relative;
-            width: 260px;
-            height: 200px;
+            width: 250px;
+            height: 190px;
             margin: 15px auto;
         }
 
@@ -230,7 +232,7 @@
         /* Lighter Visual */
         .lighter-visual {
             width: 70px;
-            height: 90px;
+            height: 85px;
             cursor: pointer;
             margin: 10px auto;
             transition: transform 0.2s;
@@ -267,7 +269,7 @@
         /* End Banner */
         .end-banner {
             display: none;
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             color: #ff0055;
             font-weight: bold;
             text-shadow: 2px 2px 0px #fff, 0 0 20px #ff0055;
@@ -296,7 +298,7 @@
         }
     </style>
 </head>
-<body onclick="initAudio()">
+<body onclick="startGlobalAudio()">
 
     <!-- SCREEN 1: Welcome Page -->
     <div id="screen1" class="screen active">
@@ -305,7 +307,7 @@
             <h1 class="title">HAPPY BIRTHDAY MITHI</h1>
             <div class="doll-bar">🌸 🌺 🌷 🌻</div>
             
-            <div class="gift-wrapper" onclick="openGift()">
+            <div class="gift-wrapper" onclick="openGift(event)">
                 <svg width="120" height="120" viewBox="0 0 100 100">
                     <rect x="15" y="40" width="70" height="50" rx="10" fill="#ff4081"/>
                     <rect x="10" y="28" width="80" height="16" rx="6" fill="#ff0055"/>
@@ -341,7 +343,7 @@
     <div id="screen3" class="screen">
         <div class="glass-card">
             <div class="doll-bar">🪆 🌸 🎀</div>
-            <img src="photo1.jpg" alt="Photo 1" class="photo-frame" onerror="this.src='https://via.placeholder.com/230x310?text=Photo+1'">
+            <img src="photo1.jpg" alt="Photo 1" class="photo-frame" onerror="this.src='https://via.placeholder.com/230x300?text=Photo+1'">
             <div class="hindi-box">
                 मेरी प्यारी बहन मीठी को जन्मदिन की बहुत-बहुत शुभकामनाएं! 🎂🎉<br><br>
                 तुम हमेशा ऐसे ही मुस्कुराती रहो और तुम्हारे जीवन में ढेर सारी खुशियाँ आएँ! ✨
@@ -354,7 +356,7 @@
     <div id="screen4" class="screen">
         <div class="glass-card">
             <div class="doll-bar">🧸 🎵 🌸</div>
-            <img src="photo2.jpg" alt="Photo 2" class="photo-frame" onerror="this.src='https://via.placeholder.com/230x310?text=Photo+2'">
+            <img src="photo2.jpg" alt="Photo 2" class="photo-frame" onerror="this.src='https://via.placeholder.com/230x300?text=Photo+2'">
             <div class="hindi-box">
                 🎵 आपके लिए यह विशेष जन्मदिन गीत बज रहा है! 🎶
             </div>
@@ -367,7 +369,7 @@
         <div class="glass-card">
             <h1 class="title">Happy Birthday Mithi</h1>
             <div class="doll-bar">🎉 🪆 🥳 🧸 🎉</div>
-            <img src="photo3.jpg" alt="Photo 3" class="photo-frame" onerror="this.src='https://via.placeholder.com/230x310?text=Photo+3'">
+            <img src="photo3.jpg" alt="Photo 3" class="photo-frame" onerror="this.src='https://via.placeholder.com/230x300?text=Photo+3'">
             <div class="doll-bar">🎉 🌸 🌷 🌺 🎉</div>
             
             <button class="btn-action btn-celebrate" onclick="goToScreen('screen6')">🎉 Celebrate ✨</button>
@@ -386,7 +388,7 @@
         </div>
 
         <div class="glass-card">
-            <h1 class="title" style="font-size: 2.2rem;">Cake Cutting Time! 🎂</h1>
+            <h1 class="title" style="font-size: 2.1rem;">Cake Cutting Time! 🎂</h1>
             
             <div class="cake-container">
                 <!-- Knife -->
@@ -463,20 +465,26 @@
         let audioCtx = null;
         let chantInterval = null;
 
-        function initAudio() {
+        function startGlobalAudio() {
             if (!audioInitialized) {
                 bgAudio.volume = 0.5;
-                bgAudio.play().catch(e => console.log("Audio awaiting gesture"));
+                bgAudio.play().catch(e => console.log("Bg audio setup"));
                 audioInitialized = true;
             }
         }
 
+        // Direct Navigation Function
         function goToScreen(screenId) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById(screenId).classList.add('active');
+            const targetScreen = document.getElementById(screenId);
+            if (targetScreen) {
+                targetScreen.classList.add('active');
+            }
         }
 
-        function openGift() {
+        function openGift(e) {
+            if (e) e.stopPropagation();
+            startGlobalAudio();
             triggerConfetti();
             goToScreen('screen2');
         }
@@ -489,20 +497,16 @@
 
         // Fixed Balloon 2 Song Playback
         function playBalloon2SongAndGo(screenId) {
+            startGlobalAudio();
             bgAudio.pause();
             balloon2Audio.currentTime = 0;
-            let playPromise = balloon2Audio.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    balloon2Audio.play();
-                });
-            }
+            balloon2Audio.play().catch(e => console.log("Playing balloon2 audio"));
             goToScreen(screenId);
         }
 
         function stopBalloon2SongAndGo(screenId) {
             balloon2Audio.pause();
-            bgAudio.play().catch(e => console.log("Bg audio resumed"));
+            bgAudio.play().catch(e => console.log("Resuming bg audio"));
             goToScreen(screenId);
         }
 
@@ -516,7 +520,7 @@
             startHighPitchChant();
         }
 
-        // Web Audio Synthesizer Voice Chanting for Happy Birthday Mithi
+        // Audio Melody Speech Synthesizer Chants
         function playAudioChantSound() {
             if (!audioCtx) {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -525,7 +529,6 @@
                 audioCtx.resume();
             }
 
-            // High pitch melody notes simulating "Happy Birthday Mithi"
             const notes = [
                 { f: 523.25, d: 0.2 }, { f: 523.25, d: 0.2 },
                 { f: 587.33, d: 0.4 }, { f: 523.25, d: 0.4 },
@@ -546,17 +549,10 @@
                 osc.stop(time + n.d);
                 time += n.d + 0.05;
             });
-        }
 
-        function startHighPitchChant() {
-            playAudioChantSound();
-            if (!chantInterval) {
-                chantInterval = setInterval(() => {
-                    playAudioChantSound();
-                }, 2200);
-            }
-        }
-
-        // Cake Cutting Action
-        function cutCake() {
-    
+            // Browser Voice Chant Speech Synthesis Fallback
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const msg = new SpeechSynthesisUtterance("Happy Birthday Mithi");
+                msg.pitch = 1.3;
+     
